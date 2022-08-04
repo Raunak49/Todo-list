@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 function TodoForm(props) {
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
@@ -15,7 +16,7 @@ function TodoForm(props) {
     const handleSubmit = e => {
         e.preventDefault();
         props.onSubmit({
-            id : Math.floor(Math.random()*1000),
+            id : uuidv4(),
             text: input
         });
         setInput('')
